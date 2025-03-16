@@ -15,4 +15,9 @@ function draw() {
     fill('green');
     stroke('black')
     rect(-20, height/2+100, width+40, height);
+
+    // Emojis
+    textSize(75);
+    text('🌸', 150, 450);
+    text('🐞', mouseX, mouseY);
 }
