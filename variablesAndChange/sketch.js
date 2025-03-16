@@ -12,25 +12,29 @@ function drawTree(x, y) {
 
     // Leaves
     fill('green');
-    triangle(x-30, y, x + (width/16)/2, y-height/3, x+(width/16)+30, y)
+    triangle(x-30, y, x + (width/16)/2, y-height/2, x+(width/16)+30, y)
 }
 
 function drawShootingStar() {
-    
+
+}
+
+function drawMoon(x, y) {
+    // Moon
+    fill(255);
+    stroke(0);
+    circle(x, y, height / 4);
+
+    // Overlapping navy circle for crescent moon
+    stroke('navy');
+    fill('navy');
+    circle(x-height/16, y, height / 4);
 }
 
 function draw() {
     background('navy');
 
-    // Moon
-    fill(255);
-    stroke(0);
-    circle(700, 100, 200);
-
-    // Overlapping navy circle for crescent moon
-    stroke('navy');
-    fill('navy');
-    circle(640, 100, 200);
+    drawMoon(650, 150);
 
     // Mountains
     stroke(0);
