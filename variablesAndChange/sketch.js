@@ -1,4 +1,6 @@
 let cloudOneX = 100;
+let lineXone = 0;
+let lineYone = 0;
 
 function setup() {
     createCanvas(800, 800);
@@ -15,10 +17,6 @@ function drawTree(x, y) {
     triangle(x-30, y, x + (width/16)/2, y-height/2, x+(width/16)+30, y)
 }
 
-function drawShootingStar() {
-
-}
-
 function drawMoon(x, y) {
     // Moon
     fill(255);
@@ -31,10 +29,21 @@ function drawMoon(x, y) {
     circle(x-height/16, y, height / 4);
 }
 
+function drawShootingStar() {
+    if (frameCount % 15 === 0) {
+        line(lineXone, lineYone, lineXone + 60, lineYone - 60);
+    }
+}
+
 function draw() {
+    frameRate(60);
     background('navy');
 
     drawMoon(650, 150);
+
+    // Shooting star
+    stroke('yellow');
+    drawShootingStar();
 
     // Mountains
     stroke(0);
@@ -54,14 +63,19 @@ function draw() {
     drawTree(600, 550);
     drawTree(200, 600);
 
-    // Cloud
+    // Clouds
     fill(230);
     ellipse(cloudOneX, 100, 160, 80);
+    ellipse(cloudOneX - 80, 180, 60, 20);
+    ellipse(cloudOneX + 40, 200, 80, 20);
 
-    cloudOneX = (frameCount * 2) % width;
-    console.log(cloudOneX);
+    // Update positions
+    cloudOneX = (frameCount) % width;
+    lineXone = random(0, width);
+    lineYone = random(0, height / 2);
+
 
     // Displays x & y position of mouse on canvass
     fill(255);
-    text(`mouseX: ${mouseX}, mouseY: ${mouseY}, 20, 20`);
+    text(`mouseX: ${mouseX}, mouseY: ${mouseY}`, 20, 20);
 }
